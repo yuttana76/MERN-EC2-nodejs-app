@@ -14,16 +14,16 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}} docker.io    
       - name: Build Docker Image
-        run: docker build -t intregration-bomdev/nodejs-app  .
+        run: docker build -t yuttana76/nodejs-app  .
       - name: Publish Image to docker hub
-        run: docker push ${{secrets.DOCKER_USERNAME}}/intregration-bomdev/nodejs-app:latest 
+        run: docker push yuttana76/nodejs-app:latest 
  
   deploy:
     needs: build
     runs-on: self-hosted 
     steps:
       - name: Pull image from docker hub
-        run: docker pull intregration-bomdev/nodejs-app:latest 
+        run: docker pull yuttana76/nodejs-app:latest 
       - name: Delete old container
         run: docker rm -f nodejs-app-container  
       - name: Run Docker Container
