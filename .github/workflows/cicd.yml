@@ -12,18 +12,18 @@ jobs:
       - name: Checkout Source
         uses: actions/checkout@v4
       - name: Login to docker hub
-        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p 'xxxx' #${{secrets.DOCKER_PASSWORD}}     
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}     
       - name: Build Docker Image
         run: docker build -t intregration-bomdev/nodejs-app  .
       - name: Publish Image to docker hub
-        run: docker push intregration-bomdev/nodejs-app:latest 
+        run: docker push intregration-bomdev/nodejs-app 
  
   deploy:
     needs: build
     runs-on: self-hosted 
     steps:
       - name: Pull image from docker hub
-        run: docker pull intregration-bomdev/nodejs-app:latest 
+        run: docker pull intregration-bomdev/nodejs-app 
       - name: Delete old container
         run: docker rm -f nodejs-app-container  
       - name: Run Docker Container
