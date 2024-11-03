@@ -1,3 +1,7 @@
+# AWS URL for test
+http://13.239.36.55:4000/
+
+
 # Nodejs app with rest and graphql example
 
 https://www.youtube.com/watch?v=MmidULYvjYE
